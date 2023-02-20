@@ -8,18 +8,13 @@ void writePpmImage(const Image& image, std::ostream& out)
 
     // output pixels
 
-    auto to255{[](float color)
-    {
-        return static_cast<int>(color * 255);
-    }};
-
     for (auto y{0}; y < image.getHeight(); y++ )
     {
         for (auto x{0}; x < image.getWidth(); x++)
         {
-            const glm::vec3& currColor = image.at(x, y);
+            const Pixel& currColor = image.at(x, y);
 
-            out << to255(currColor[0]) << ' ' << to255(currColor[1]) << ' ' << to255(currColor[2]) << '\n';
+            out << +currColor.r << ' ' << +currColor.g << ' ' << +currColor.b << '\n';
         }
     }
 }

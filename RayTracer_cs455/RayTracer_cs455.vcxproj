@@ -248,6 +248,7 @@
   <ItemGroup>
     <ClInclude Include="src\headers\Image.h" />
     <ClInclude Include="src\headers\ImageOutput.h" />
+    <ClInclude Include="src\headers\Pixel.h" />
     <ClInclude Include="src\headers\Ray.h" />
     <ClInclude Include="src\headers\Renderer.h" />
     <ClInclude Include="src\headers\Scene.h" />
