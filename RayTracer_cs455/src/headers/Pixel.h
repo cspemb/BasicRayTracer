@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <cstdint>
-#include <iostream>
 #include <glm/vec3.hpp>
 
 

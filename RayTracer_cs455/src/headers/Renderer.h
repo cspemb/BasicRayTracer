@@ -5,8 +5,10 @@
 
 class Renderer
 {
-    static constexpr int imHeight {256};
+    static constexpr auto aspectRatio {16.0 / 9.0};
     static constexpr int imWidth {256};
+    static constexpr int imHeight {static_cast<int>(imWidth / aspectRatio)};
+    
     
     const Scene& scene;
     std::shared_ptr<Image> image;
