@@ -1,18 +1,17 @@
 #include "Image.h"
 #include "World.h"
 #include "ImageOutput.h"
+#include "Renderer.h"
 
 int main()
 {
-    constexpr int imHeight {256};
-    constexpr int imWidth {256};
-    
     for (const auto& [sceneName, scene] : getScenes())
     {
-        //Render
-        const Image image {imWidth, imHeight, scene.getBgColor()};
+        Renderer renderer {scene};
 
-        outputPpmFile(image, sceneName);
+        const std::shared_ptr<Image> image = renderer.render();
+
+        outputPpmFile(*image, sceneName);
     }
     
     return 0;
