@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Tracer
+class Renderer
 {
 public:
     
