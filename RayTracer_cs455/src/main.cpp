@@ -4,15 +4,16 @@
 
 int main()
 {
-    Scene scene1 {getScene1()};
+    constexpr int imHeight {256};
+    constexpr int imWidth {256};
+    
+    for (const auto& [sceneName, scene] : getScenes())
+    {
+        //Render
+        const Image image {imWidth, imHeight, scene.getBgColor()};
 
-    constexpr int imHeight = 256;
-    constexpr int imWidth = 256;
-
-    //Render
-    Image image1 {imWidth, imHeight, scene1.getBgColor()};
-
-    outputPpmFile(image1, "scene1");
+        outputPpmFile(image, sceneName);
+    }
     
     return 0;
 }

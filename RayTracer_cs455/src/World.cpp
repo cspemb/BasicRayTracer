@@ -1,4 +1,8 @@
 ﻿#include "World.h"
+
+#include <map>
+#include <string_view>
+
 #include "Sphere.h"
 
 Scene& getScene1()
@@ -81,4 +85,11 @@ Scene& getScene3()
     scene.addObject(sphereGreen);
     scene.addObject(sphereBlue);
     return scene;
+}
+
+const std::map<std::string_view, Scene>& getScenes()
+{
+    static std::map<std::string_view, Scene> scenes {{"scene1", getScene1()}, {"scene2", getScene2()}, {"scene3", getScene3()}};
+
+    return scenes;
 }
