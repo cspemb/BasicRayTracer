@@ -13,7 +13,7 @@ class Renderer
     const Scene& scene;
     std::shared_ptr<Image> image;
 
-    void processPixel(int x, int y);
+    void processPixel(int x, int y) const;
 public:
     Renderer(const Scene& scene)
         : scene(scene)

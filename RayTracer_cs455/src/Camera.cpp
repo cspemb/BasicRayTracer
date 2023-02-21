@@ -1,6 +1,6 @@
 ﻿#include "Camera.h"
 
-Ray Camera::getRay(float i, float j)
+Ray Camera::getRay(float i, float j) const
 {
     return {position, minPlane + i * horizontal + j * vertical - position};
 }

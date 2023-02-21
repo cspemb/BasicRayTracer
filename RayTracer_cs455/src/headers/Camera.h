@@ -14,6 +14,7 @@ class Camera
     glm::vec3 minPlane{};
     
 public:
+    Camera() = default; 
     Camera(const glm::vec3& lookFrom, const glm::vec3& lookAt, const glm::vec3& lookUp, int fov)
     {
         const float offset = glm::tan(glm::radians(static_cast<float>(fov) / 2.0f));
@@ -28,7 +29,7 @@ public:
         minPlane = position - (horizontal / 2.0f) - (vertical / 2.0f) - w;
     }
 
-    Ray getRay(float i, float j);
+    Ray getRay(float i, float j) const;
 
     [[nodiscard]] const glm::vec3& getPosition() const;
 

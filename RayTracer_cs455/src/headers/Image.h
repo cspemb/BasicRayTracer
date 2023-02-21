@@ -25,5 +25,5 @@ public:
 
     [[nodiscard]] int getHeight() const;
 
-    [[nodiscard]] const Pixel& at(int x, int y) const;
+    [[nodiscard]] Pixel& at(int x, int y);
 };
