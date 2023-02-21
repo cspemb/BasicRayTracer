@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Image.cpp" />
     <ClCompile Include="src\ImageOutput.cpp" />
     <ClCompile Include="src\main.cpp">
@@ -246,6 +247,7 @@
     <Content Include="scenes\scene3.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\headers\Camera.h" />
     <ClInclude Include="src\headers\Image.h" />
     <ClInclude Include="src\headers\ImageOutput.h" />
     <ClInclude Include="src\headers\Pixel.h" />

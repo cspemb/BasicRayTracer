@@ -4,6 +4,8 @@
 #include "SceneObject.h"
 #include <vector>
 
+#include "Camera.h"
+
 class Scene
 {
     //Camera parameters
@@ -19,6 +21,7 @@ class Scene
     
     const glm::vec3 bgColor{};
 
+    Camera camera;
     std::vector<SceneObject> objects{};
     
 public:
@@ -32,7 +35,10 @@ public:
           lightDir(light_dir),
           lightColor(light_color),
           ambientLightColor(ambient_light_color),
-          bgColor(bg_color){}
+          bgColor(bg_color)
+    {
+        camera = {lookFrom, lookAt, lookUp, fov};
+    }
 
     void addObject(const SceneObject& object);
 
@@ -45,4 +51,5 @@ public:
     [[nodiscard]] const glm::vec3& getAmbientLightColor() const;
     [[nodiscard]] const glm::vec3& getBgColor() const;
     [[nodiscard]] const std::vector<SceneObject>& getObjects() const;
+    [[nodiscard]] const Camera& getCamera() const;
 };

@@ -49,3 +49,8 @@ void Scene::addObject(const SceneObject& object)
 {
     return this->objects;
 }
+
+[[nodiscard]] const Camera& Scene::getCamera() const
+{
+    return this->camera;
+}
