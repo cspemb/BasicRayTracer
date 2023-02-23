@@ -33,7 +33,7 @@ public:
           lookFrom(look_from),
           lookUp(look_up),
           fov(fov),
-          lightDir(light_dir),
+          lightDir(normalize(light_dir)),
           lightColor(light_color),
           ambientLightColor(ambient_light_color),
           bgColor(bg_color)
