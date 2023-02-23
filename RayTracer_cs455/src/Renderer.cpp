@@ -5,12 +5,23 @@
 #include <glm/vec3.hpp>
 
 void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const {
-    const auto& object {scene.getObjects().at(0)};
-    const float intersection = object -> intersect(r);
+    float closestIntersection{std::numeric_limits<float>::infinity()};
+    std::shared_ptr<SceneObject> closestObject{};
     
-    if (intersection > 0)
+    for (const auto& object : scene.getObjects())
     {
-        glm::vec3 objectNormal = object->getNormal(r->at(intersection));
+        const float currIntersection = object -> intersect(r);
+
+        if (currIntersection > 0 && currIntersection < closestIntersection)
+        {
+            closestIntersection = currIntersection;
+            closestObject = object;
+        }
+    }
+    
+    if (closestObject)
+    {
+        glm::vec3 objectNormal = closestObject->getNormal(r->at(closestIntersection));
         pixel.r = static_cast<uint8_t>(((objectNormal.x + 1) * 255) / 2);
         pixel.g = static_cast<uint8_t>(((objectNormal.y + 1) * 255) / 2);
         pixel.b = static_cast<uint8_t>(((objectNormal.z + 1) * 255) / 2);
