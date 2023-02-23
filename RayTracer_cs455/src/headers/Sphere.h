@@ -28,4 +28,6 @@ struct Sphere : SceneObject
           specularColor(specular_color),
           glossiness(glossiness)
     {}
+
+    bool intersect(std::shared_ptr<Ray> r) override;
 };

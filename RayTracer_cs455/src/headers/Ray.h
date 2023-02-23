@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <glm/vec3.hpp>
+#include <glm/glm.hpp>
 
 class Ray
 {
@@ -9,7 +10,7 @@ class Ray
 public:
     Ray(const glm::vec3& origin, const glm::vec3& direction)
         : origin(origin),
-          direction(direction)
+          direction(normalize(direction))
     {}
 
     [[nodiscard]] glm::vec3 at(float t) const;

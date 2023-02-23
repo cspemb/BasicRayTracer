@@ -1,6 +1,7 @@
 ﻿#include "World.h"
 
 #include <map>
+#include <memory>
 #include <string_view>
 
 #include "Sphere.h"
@@ -22,8 +23,8 @@ Scene& getScene1()
 
     //Objects
     
-    static Sphere spherePurple {{0.0f, 0.0f, 0.0f}, .4f, .7f, .2f,
-        .1f, {1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f}, 16.0f };
+    static std::shared_ptr<SceneObject> spherePurple {std::make_shared<Sphere>(glm::vec3{0.0f, 0.0f, 0.0f}, .4f, .7f, .2f,
+        .1f, glm::vec3{1.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 16.0f)};
 
     scene.addObject(spherePurple);
     return scene;
@@ -46,10 +47,10 @@ Scene& getScene2()
 
     //Objects
 
-    static Sphere sphereWhite {glm::vec3{0.45f, 0.0f, -0.15f}, .15f, .8f, .1f, .3f, glm::vec3{1.0f, 1.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f };
-    static Sphere sphereRed {glm::vec3{0.0f, 0.0f, -0.1f}, .2f, .6f, .3f, .1f, glm::vec3{1.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 32.0f };
-    static Sphere sphereGreen {glm::vec3{-0.6f, 0.0f, 0.0f}, .3f, .7f, .2f, .1f, glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{0.5f, 1.0f, 0.5f}, 64.0f };
-    static Sphere sphereBlue {glm::vec3{0.0f, -10000.5f, 0.0f}, 10000.0f, .9f, 0.0f, .1f, glm::vec3{0.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 16.0f };
+    static std::shared_ptr<SceneObject> sphereWhite {std::make_shared<Sphere>(glm::vec3{0.45f, 0.0f, -0.15f}, .15f, .8f, .1f, .3f, glm::vec3{1.0f, 1.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f )};
+    static std::shared_ptr<SceneObject> sphereRed {std::make_shared<Sphere>(glm::vec3{0.0f, 0.0f, -0.1f}, .2f, .6f, .3f, .1f, glm::vec3{1.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 32.0f )};
+    static std::shared_ptr<SceneObject> sphereGreen {std::make_shared<Sphere>(glm::vec3{-0.6f, 0.0f, 0.0f}, .3f, .7f, .2f, .1f, glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{0.5f, 1.0f, 0.5f}, 64.0f )};
+    static std::shared_ptr<SceneObject> sphereBlue {std::make_shared<Sphere>(glm::vec3{0.0f, -10000.5f, 0.0f}, 10000.0f, .9f, 0.0f, .1f, glm::vec3{0.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 16.0f )};
 
     scene.addObject(sphereWhite);
     scene.addObject(sphereRed);
@@ -75,10 +76,10 @@ Scene& getScene3()
 
     //Objects
 
-    static Sphere sphereWhite {glm::vec3{0.45f, 0.0f, -0.15f}, .15f, .8f, .1f, .3f, glm::vec3{1.0f, 1.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f };
-    static Sphere sphereRed {glm::vec3{0.0f, 0.0f, -0.1f}, .2f, .6f, .3f, .1f, glm::vec3{1.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 32.0f };
-    static Sphere sphereGreen {glm::vec3{-0.6f, 0.0f, 0.0f}, .3f, .7f, .2f, .1f, glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{0.5f, 1.0f, 0.5f}, 64.0f };
-    static Sphere sphereBlue {glm::vec3{0.0f, -10000.5f, 0.0f}, 10000.0f, .9f, 0.0f, .1f, glm::vec3{0.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 16.0f };
+    static std::shared_ptr<SceneObject> sphereWhite {std::make_shared<Sphere>(glm::vec3{0.45f, 0.0f, -0.15f}, .15f, .8f, .1f, .3f, glm::vec3{1.0f, 1.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f )};
+    static std::shared_ptr<SceneObject> sphereRed {std::make_shared<Sphere>(glm::vec3{0.0f, 0.0f, -0.1f}, .2f, .6f, .3f, .1f, glm::vec3{1.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 32.0f )};
+    static std::shared_ptr<SceneObject> sphereGreen {std::make_shared<Sphere>(glm::vec3{-0.6f, 0.0f, 0.0f}, .3f, .7f, .2f, .1f, glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{0.5f, 1.0f, 0.5f}, 64.0f )};
+    static std::shared_ptr<SceneObject> sphereBlue {std::make_shared<Sphere>(glm::vec3{0.0f, -10000.5f, 0.0f}, 10000.0f, .9f, 0.0f, .1f, glm::vec3{0.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 16.0f )};
 
     scene.addObject(sphereWhite);
     scene.addObject(sphereRed);

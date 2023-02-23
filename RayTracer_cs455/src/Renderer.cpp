@@ -1,9 +1,20 @@
 ﻿#include "Renderer.h"
+
+#include <inttypes.h>
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
 
-void ray_color(const Ray& r, Pixel& pixel) {
-    auto unit_direction = normalize(r.getDirection());
+void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const {
+    const auto& object {scene.getObjects().at(0)};
+    if (object->intersect(r))
+    {
+        pixel.r = 255;
+        pixel.g = 0;
+        pixel.b = 0;
+        return;
+    }
+    
+    auto unit_direction = normalize(r->getDirection());
     auto t = 0.5f*(unit_direction.y + 1.0f);
 
     auto getColor{
@@ -22,7 +33,7 @@ void Renderer::processPixel(int x,  int y) const
 {
     auto u = static_cast<float>(x) / imWidth;
     auto v = static_cast<float>(y) / imHeight;
-    const Ray r = {scene.getCamera().getRay(u, v)};
+    const std::shared_ptr<Ray> r = scene.getCamera().getRay(u, v);
     ray_color(r, image->at(x, y));
 }
 

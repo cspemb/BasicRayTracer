@@ -1,8 +1,10 @@
 ﻿#include "Camera.h"
 
-Ray Camera::getRay(float i, float j) const
+#include <memory>
+
+std::shared_ptr<Ray> Camera::getRay(float i, float j) const
 {
-    return {position, minPlane + i * horizontal + j * vertical - position};
+    return std::make_shared<Ray>(position, minPlane + i * horizontal + j * vertical - position);
 }
 
 const glm::vec3& Camera::getPosition() const

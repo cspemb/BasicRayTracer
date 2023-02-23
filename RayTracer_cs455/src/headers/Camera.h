@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <memory>
 #include <glm/vec3.hpp>
 #include <glm/glm.hpp>
 
@@ -29,7 +30,7 @@ public:
         minPlane = position - (horizontal / 2.0f) - (vertical / 2.0f) - w;
     }
 
-    Ray getRay(float i, float j) const;
+    std::shared_ptr<Ray> getRay(float i, float j) const;
 
     [[nodiscard]] const glm::vec3& getPosition() const;
 

@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <memory>
 #include <glm/vec3.hpp>
 
 #include "SceneObject.h"
@@ -22,7 +23,7 @@ class Scene
     const glm::vec3 bgColor{};
 
     Camera camera;
-    std::vector<SceneObject> objects{};
+    std::vector<std::shared_ptr<SceneObject>> objects{};
     
 public:
     Scene(const glm::vec3& look_at, const glm::vec3& look_from, const glm::vec3& look_up, const int fov,
@@ -40,7 +41,7 @@ public:
         camera = {lookFrom, lookAt, lookUp, fov};
     }
 
-    void addObject(const SceneObject& object);
+    void addObject(std::shared_ptr<SceneObject> object);
 
     [[nodiscard]] const glm::vec3& getLookAt() const;
     [[nodiscard]] const glm::vec3& getLookFrom() const;
@@ -50,6 +51,6 @@ public:
     [[nodiscard]] const glm::vec3& getLightColor() const;
     [[nodiscard]] const glm::vec3& getAmbientLightColor() const;
     [[nodiscard]] const glm::vec3& getBgColor() const;
-    [[nodiscard]] const std::vector<SceneObject>& getObjects() const;
+    [[nodiscard]] const std::vector<std::shared_ptr<SceneObject>>& getObjects() const;
     [[nodiscard]] const Camera& getCamera() const;
 };
