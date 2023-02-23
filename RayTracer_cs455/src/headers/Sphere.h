@@ -29,5 +29,6 @@ struct Sphere : SceneObject
           glossiness(glossiness)
     {}
 
-    bool intersect(std::shared_ptr<Ray> r) override;
+    float intersect(std::shared_ptr<Ray> r) override;
+    glm::vec3 getNormal(glm::vec3 point) override;
 };

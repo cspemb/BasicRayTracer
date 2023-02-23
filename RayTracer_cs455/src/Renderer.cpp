@@ -6,11 +6,14 @@
 
 void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const {
     const auto& object {scene.getObjects().at(0)};
-    if (object->intersect(r))
+    const float intersection = object -> intersect(r);
+    
+    if (intersection > 0)
     {
-        pixel.r = 255;
-        pixel.g = 0;
-        pixel.b = 0;
+        glm::vec3 objectNormal = object->getNormal(r->at(intersection));
+        pixel.r = static_cast<uint8_t>(((objectNormal.x + 1) * 255) / 2);
+        pixel.g = static_cast<uint8_t>(((objectNormal.y + 1) * 255) / 2);
+        pixel.b = static_cast<uint8_t>(((objectNormal.z + 1) * 255) / 2);
         return;
     }
     

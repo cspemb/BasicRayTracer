@@ -1,7 +1,7 @@
 ﻿#include "Sphere.h"
 #include <glm/glm.hpp>
 
-bool Sphere::intersect(std::shared_ptr<Ray> r)
+float Sphere::intersect(std::shared_ptr<Ray> r)
 {
     glm::vec3 oc = r->getOrigin() - center;
     const auto b = 2.0f * dot(oc, r->getDirection());
@@ -16,10 +16,16 @@ bool Sphere::intersect(std::shared_ptr<Ray> r)
     //Miss
     if (discriminant < 0)
     {
-        return false;
+        return -1.0;
     }
-    
-    // return quadratic(false);
-    return true;
-    
+
+    const float EPS = 0.001f;
+    return quadratic(fabs(discriminant) < EPS); //If discriminant is 0
 }
+
+glm::vec3 Sphere::getNormal(glm::vec3 point)
+{
+    return normalize(point - center);
+}
+
+
