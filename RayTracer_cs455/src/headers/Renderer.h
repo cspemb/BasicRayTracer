@@ -8,7 +8,7 @@
 class Renderer
 {
     static constexpr auto aspectRatio {16.0 / 16.0};
-    static constexpr int imWidth {400};
+    static constexpr int imWidth {500};
     static constexpr int imHeight {static_cast<int>(imWidth / aspectRatio)};
     
     
