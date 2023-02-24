@@ -1,8 +1,11 @@
 ﻿#pragma once
+#include <memory>
 #include <glm/vec3.hpp>
 
 #include "SceneObject.h"
 #include <vector>
+
+#include "Camera.h"
 
 class Scene
 {
@@ -19,7 +22,8 @@ class Scene
     
     const glm::vec3 bgColor{};
 
-    std::vector<SceneObject> objects{};
+    Camera camera;
+    std::vector<std::shared_ptr<SceneObject>> objects{};
     
 public:
     Scene(const glm::vec3& look_at, const glm::vec3& look_from, const glm::vec3& look_up, const int fov,
@@ -29,12 +33,15 @@ public:
           lookFrom(look_from),
           lookUp(look_up),
           fov(fov),
-          lightDir(light_dir),
+          lightDir(normalize(light_dir)),
           lightColor(light_color),
           ambientLightColor(ambient_light_color),
-          bgColor(bg_color){}
+          bgColor(bg_color)
+    {
+        camera = {lookFrom, lookAt, lookUp, fov};
+    }
 
-    void addObject(const SceneObject& object);
+    void addObject(std::shared_ptr<SceneObject> object);
 
     [[nodiscard]] const glm::vec3& getLookAt() const;
     [[nodiscard]] const glm::vec3& getLookFrom() const;
@@ -44,5 +51,6 @@ public:
     [[nodiscard]] const glm::vec3& getLightColor() const;
     [[nodiscard]] const glm::vec3& getAmbientLightColor() const;
     [[nodiscard]] const glm::vec3& getBgColor() const;
-    [[nodiscard]] const std::vector<SceneObject>& getObjects() const;
+    [[nodiscard]] const std::vector<std::shared_ptr<SceneObject>>& getObjects() const;
+    [[nodiscard]] const Camera& getCamera() const;
 };

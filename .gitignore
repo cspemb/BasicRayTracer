@@ -1,3 +1,5 @@
 ﻿.idea
 RayTracer_cs455/x64
+RayTracer_cs455/scenes/*.ppm
+
 x64
