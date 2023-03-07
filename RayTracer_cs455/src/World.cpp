@@ -87,9 +87,76 @@ Scene& getScene3()
     return scene;
 }
 
+Scene& getScene4()
+{
+    //Scene implicits
+    constexpr glm::vec3 lookAt{0.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 lookFrom{0.0f,  0.0f, 1.0f};
+    constexpr glm::vec3 lookUp{0.0f, 1.0f, 0.0f};
+    constexpr int fov {90};
+
+    constexpr glm::vec3 lightDirection{0.0f, 1.0f, 0.0f};
+    constexpr glm::vec3 lightColor{1.0f, 1.0f, 1.0f};
+    constexpr glm::vec3 ambientColor{0.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 backgroundColor{0.2f, 0.2f, 0.2f};
+
+    static Scene scene{lookAt, lookFrom, lookUp, fov, lightDirection, lightColor, ambientColor, backgroundColor};
+
+    //Objects
+    
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{-20.0f, 10.0f, -10.0f}, 10.0f, .55f, .35f, .1f, glm::vec3{1.0f, 0.75f, 0.75f}, glm::vec3{1.0f, 0.5f, 0.5f}, 32.0f ));
+    
+    return scene;
+}
+
+Scene& getScene5()
+{
+    //Scene implicits
+    constexpr glm::vec3 lookAt{0.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 lookFrom{0.0f,  0.0f, 1.0f};
+    constexpr glm::vec3 lookUp{0.0f, 1.0f, 0.0f};
+    constexpr int fov {90};
+
+    constexpr glm::vec3 lightDirection{1.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 lightColor{1.0f, 1.0f, 1.0f};
+    constexpr glm::vec3 ambientColor{0.1f, 0.1f, 0.1f};
+    constexpr glm::vec3 backgroundColor{0.2f, 0.2f, 0.2f};
+
+    static Scene scene{lookAt, lookFrom, lookUp, fov, lightDirection, lightColor, ambientColor, backgroundColor};
+
+    //Objects
+    
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{-20.0f, 10.0f, -10.0f}, 10.0f, .55f, .35f, .1f, glm::vec3{1.0f, 0.75f, 0.75f}, glm::vec3{1.0f, 0.5f, 0.5f}, 32.0f ));
+    
+    return scene;
+}
+
+Scene& getScene6()
+{
+    //Scene implicits
+    constexpr glm::vec3 lookAt{0.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 lookFrom{0.0f,  0.0f, 1.0f};
+    constexpr glm::vec3 lookUp{0.0f, 1.0f, 0.0f};
+    constexpr int fov {90};
+
+    constexpr glm::vec3 lightDirection{1.0f, 0.0f, 0.0f};
+    constexpr glm::vec3 lightColor{1.0f, 1.0f, 1.0f};
+    constexpr glm::vec3 ambientColor{0.1f, 0.1f, 0.1f};
+    constexpr glm::vec3 backgroundColor{0.2f, 0.2f, 0.2f};
+
+    static Scene scene{lookAt, lookFrom, lookUp, fov, lightDirection, lightColor, ambientColor, backgroundColor};
+
+    //Objects
+    
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{-20.0f, 10.0f, -10.0f}, 10.0f, .55f, .35f, .1f, glm::vec3{1.0f, 0.75f, 0.75f}, glm::vec3{1.0f, 0.5f, 0.5f}, 32.0f ));
+    
+    return scene;
+}
+
 const std::map<std::string_view, Scene>& getScenes()
 {
-    static std::map<std::string_view, Scene> scenes {{"scene1", getScene1()}, {"scene2", getScene2()}, {"scene3", getScene3()}};
+    static std::map<std::string_view, Scene> scenes {{"scene1", getScene1()}, {"scene2", getScene2()},
+        {"scene3", getScene3()}, {"scene4", getScene4()}, {"scene5", getScene5()}, {"scene6", getScene6()}};
 
     return scenes;
 }
