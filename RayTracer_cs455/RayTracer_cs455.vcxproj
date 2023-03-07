@@ -239,12 +239,15 @@
     <ClCompile Include="src\SceneObject.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Sphere.cpp" />
+    <ClCompile Include="src\Triangle.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="scenes\scene1.txt" />
     <Content Include="scenes\scene2.txt" />
     <Content Include="scenes\scene3.txt" />
+    <Content Include="scenes\scene4.txt" />
+    <Content Include="scenes\scene5.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\Camera.h" />
@@ -257,6 +260,7 @@
     <ClInclude Include="src\headers\SceneObject.h" />
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\Sphere.h" />
+    <ClInclude Include="src\headers\Triangle.h" />
     <ClInclude Include="src\headers\World.h" />
   </ItemGroup>
   <ItemGroup>
