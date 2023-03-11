@@ -8,7 +8,7 @@ struct Sphere : SceneObject
     const glm::vec3 center{};
     const float radius{};
 
-    Sphere( const glm::vec3& center, float radius, Material sphereMaterial)
+    Sphere( const glm::vec3& center, float radius, std::shared_ptr<Material> sphereMaterial)
         : SceneObject(sphereMaterial),
           center(center),
           radius(radius)

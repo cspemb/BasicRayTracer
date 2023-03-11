@@ -5,7 +5,7 @@ struct Triangle : SceneObject
 {
     const glm::vec3 vertices[3];
     
-    Triangle(glm::vec3 vertex1, glm::vec3 vertex2, glm::vec3 vertex3, Material triangleMaterial)
+    Triangle(glm::vec3 vertex1, glm::vec3 vertex2, glm::vec3 vertex3, std::shared_ptr<Material> triangleMaterial)
         : SceneObject(triangleMaterial),
             vertices{vertex1, vertex2, vertex3}
     {}

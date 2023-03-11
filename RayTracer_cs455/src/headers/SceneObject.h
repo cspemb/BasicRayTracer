@@ -7,9 +7,9 @@
 
 struct SceneObject
 {
-    Material material;
+    std::shared_ptr<Material> material;
 
-    SceneObject(Material objectMaterial):
+    SceneObject(std::shared_ptr<Material> objectMaterial):
     material(objectMaterial)
     {
     }

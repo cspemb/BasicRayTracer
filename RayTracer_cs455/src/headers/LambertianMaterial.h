@@ -4,8 +4,13 @@
 #include "Material.h"
 #include "Scene.h"
 
-struct LambertianMaterial : Material
+class LambertianMaterial : public Material
 {
+    glm::vec3 calculateDiffuse(const Scene& scene, glm::vec3 normal) const;
+    glm::vec3 calculateSpecular(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r) const;
+    glm::vec3 calculateAmbient(const Scene& scene) const;
+    
+public:
     const float coefDiffuse{};
     const float coefSpecular{};
     const float coefAmbient{};
@@ -24,4 +29,6 @@ struct LambertianMaterial : Material
           specularColor(specular_color),
           glossiness(glossiness)
     {}
+
+    glm::vec3 getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r) override;
 };
