@@ -21,8 +21,9 @@ public:
     const float glossiness{};
     
     LambertianMaterial(float coef_diffuse, float coef_specular, float coef_ambient,
-        const glm::vec3& diffuse_color, const glm::vec3& specular_color, const float glossiness)
-        : coefDiffuse(coef_diffuse),
+        const glm::vec3& diffuse_color, const glm::vec3& specular_color, const float glossiness, const float reflectance)
+        : Material(reflectance),
+          coefDiffuse(coef_diffuse),
           coefSpecular(coef_specular),
           coefAmbient(coef_ambient),
           diffuseColor(diffuse_color),
@@ -31,4 +32,5 @@ public:
     {}
 
     glm::vec3 getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r, bool isInShadow) override;
+    glm::vec3 getReflectedDirection(const std::shared_ptr<Ray>& incidentRay, glm::vec3 normal) override;
 };

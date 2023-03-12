@@ -1,4 +1,5 @@
 #include "LambertianMaterial.h"
+#include "glm/gtc/random.hpp"
 
 glm::vec3 LambertianMaterial::calculateDiffuse(const Scene& scene, glm::vec3 normal) const
 {
@@ -28,4 +29,9 @@ glm::vec3 LambertianMaterial::getColor(const Scene& scene, glm::vec3 normal, std
     }
 
     return color;
+}
+
+glm::vec3 LambertianMaterial::getReflectedDirection([[maybe_unused]] const std::shared_ptr<Ray>& incidentRay, glm::vec3 normal)
+{
+    return normalize(glm::sphericalRand(1.0f) + normal);
 }

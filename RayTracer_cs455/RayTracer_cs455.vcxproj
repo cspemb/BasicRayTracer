@@ -238,6 +238,7 @@
     <ClCompile Include="src\ReflectiveMaterial.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SceneObject.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Sphere.cpp" />
     <ClCompile Include="src\Triangle.cpp" />

@@ -24,7 +24,7 @@ bool Renderer::isInShadow(glm::vec3 point) const
     return false;
 }
 
-void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const {
+void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel, const float reflectance, const int reflectionsLeft) const {
     float closestIntersection{std::numeric_limits<float>::infinity()};
     std::shared_ptr<SceneObject> closestObject{};
     
@@ -41,7 +41,18 @@ void Renderer::ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const {
     
     if (closestObject)
     {
-        shader->shadeObject(pixel, closestObject, r, closestIntersection, isInShadow(r->at(closestIntersection)));
+        // spawn reflection rays and get color sum
+        if (reflectionsLeft)
+        {
+            ray_color(closestObject->getReflectionRay(r, closestIntersection), pixel,
+                closestObject->material->reflectance * reflectance, reflectionsLeft - 1);
+        }
+        
+        shader->shadeObject(pixel, closestObject, r, closestIntersection, isInShadow(r->at(closestIntersection)), reflectance);
+    }
+    else // missed
+    {
+        shader->shadeMiss(pixel, reflectance, scene.getBgColor());
     }
 }
 
@@ -50,7 +61,7 @@ void Renderer::processPixel(int x,  int y) const
     auto u = static_cast<float>(x) / imWidth;
     auto v = static_cast<float>(y) / imHeight;
     const std::shared_ptr<Ray> r = scene.getCamera().getRay(u, v);
-    ray_color(r, image->at(x, y));
+    ray_color(r, image->at(x, y), 1.0f,  MAX_REFLECTIONS);
 }
 
 std::shared_ptr<Image> Renderer::render()
