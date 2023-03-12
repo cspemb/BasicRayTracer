@@ -193,10 +193,38 @@ Scene& getScene5()
     static Scene scene{lookAt, lookFrom, lookUp, fov, lightDirection, lightColor, ambientColor, backgroundColor};
 
     //Objects
+
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{0.5f, 0.0f, -0.15f}, .05f,
+    std::make_shared<LambertianMaterial>(.8f, .1f, .3f,
+        glm::vec3{1.0f, 1.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f )));
+
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{0.3f, 0.0f, -0.1f}, .08f,
+    std::make_shared<LambertianMaterial>(.8f, .8f, .1f,
+        glm::vec3{1.0f, 0.0f, 0.0f}, glm::vec3{.5f, 1.0f, 0.5f}, 32.0f )));
     
-    scene.addObject(std::make_shared<Sphere>(glm::vec3{-20.0f, 10.0f, -10.0f}, 10.0f,
-        std::make_shared<LambertianMaterial>(.55f, .35f, .1f,
-            glm::vec3{1.0f, 0.75f, 0.75f}, glm::vec3{1.0f, 0.5f, 0.5f}, 32.0f )));
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{-0.6f, 0.0f, -0.0f}, .3f,
+        std::make_shared<LambertianMaterial>(.7f, .5f, .1f,
+            glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{.5f, 1.0f, 0.5f}, 64.0f )));
+
+    scene.addObject(std::make_shared<Sphere>(glm::vec3{0.1f, -0.55f, 0.25f}, .3f,
+    std::make_shared<LambertianMaterial>(.0f, .1f, .1f,
+        glm::vec3{0.75f, .75f, 0.75f}, glm::vec3{1.0f, 1.0f, 1.0f}, 10.0f )));
+
+    scene.addObject(std::make_shared<Triangle>(
+        glm::vec3{0.3f, -0.3f, -0.4f},
+       glm::vec3{0.0f, 0.3f, -0.1f},
+       glm::vec3{-0.3f, -0.3f, 0.2f},
+       std::make_shared<LambertianMaterial>(.9f, .9f, .1f,
+       glm::vec3{0.0f, 0.0f, 1.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 32.0f ))
+       );
+
+    scene.addObject(std::make_shared<Triangle>(
+        glm::vec3{-0.2f,0.1f, 0.1f},
+       glm::vec3{-0.2f, -0.5f, 0.2f},
+       glm::vec3{-0.2f, 0.1f, -0.3f},
+       std::make_shared<LambertianMaterial>(.9f, .5f, .1f,
+       glm::vec3{1.0f, 1.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}, 4.0f ))
+       );
     
     return scene;
 }
