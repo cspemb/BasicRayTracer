@@ -5,6 +5,7 @@
 #include <string_view>
 
 #include "LambertianMaterial.h"
+#include "ReflectiveMaterial.h"
 #include "Sphere.h"
 #include "Triangle.h"
 
@@ -155,8 +156,8 @@ Scene& getScene4()
     //Objects
     
     scene.addObject(std::make_shared<Sphere>(glm::vec3{0.0f, 0.3f, -1.0f}, .25f,
-        std::make_shared<LambertianMaterial>(.0f, .1f, .1f,
-            glm::vec3{.75f, 0.75f, 0.75f}, glm::vec3{1.0f, 1.0f, 1.0f}, 10.0f)));
+        std::make_shared<ReflectiveMaterial>(.0f, .1f, .1f,
+            glm::vec3{.75f, 0.75f, 0.75f}, glm::vec3{1.0f, 1.0f, 1.0f}, 10.0f, .9f)));
 
     scene.addObject(std::make_shared<Triangle>(
        glm::vec3{0.0f, -0.7f, -0.5f},
@@ -207,8 +208,8 @@ Scene& getScene5()
             glm::vec3{0.0f, 1.0f, 0.0f}, glm::vec3{.5f, 1.0f, 0.5f}, 64.0f )));
 
     scene.addObject(std::make_shared<Sphere>(glm::vec3{0.1f, -0.55f, 0.25f}, .3f,
-    std::make_shared<LambertianMaterial>(.0f, .1f, .1f,
-        glm::vec3{0.75f, .75f, 0.75f}, glm::vec3{1.0f, 1.0f, 1.0f}, 10.0f )));
+    std::make_shared<ReflectiveMaterial>(.0f, .1f, .1f,
+        glm::vec3{0.75f, .75f, 0.75f}, glm::vec3{1.0f, 1.0f, 1.0f}, 10.0f, .9f)));
 
     scene.addObject(std::make_shared<Triangle>(
         glm::vec3{0.3f, -0.3f, -0.4f},
