@@ -13,12 +13,11 @@ class Image
     
 public:
     
-    Image(int width, int height, const glm::vec3& bgColor)
+    Image(int width, int height)
         : width(width),
           height(height)
     {
-        // Initialize each pixel with bgColor filled in
-        buffer = std::vector(static_cast<std::size_t>(width * height), Pixel{bgColor});
+        buffer = std::vector<Pixel>(static_cast<std::size_t>(width * height));
     }
 
     [[nodiscard]] int getWidth() const; 

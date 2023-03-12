@@ -4,16 +4,20 @@
 
 class Ray
 {
-    const glm::vec3 origin{};
+    glm::vec3 origin{};
     const glm::vec3 direction{};
     
+    glm::vec3 offsetInDir(glm::vec3 origin);
+    
 public:
-    Ray(const glm::vec3 origin, const glm::vec3& direction)
-        : origin(origin),
-          direction(normalize(direction))
-    {}
+    Ray(const glm::vec3 origin, const glm::vec3& direction, bool isOffsetInDir = false)
+        : direction(normalize(direction))
+    {
+        this->origin = isOffsetInDir ? offsetInDir(origin) : origin;
+    }
 
     [[nodiscard]] glm::vec3 at(float t) const;
     [[nodiscard]] glm::vec3 getOrigin() const;
     [[nodiscard]] glm::vec3 getDirection() const;
+
 };

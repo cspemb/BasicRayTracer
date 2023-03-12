@@ -10,6 +10,8 @@ struct Pixel
     uint8_t b{};
     const uint8_t a{255};
 
+    Pixel() = default;
+
     Pixel(uint8_t r, uint8_t g, uint8_t b)
         : r(r),
           g(g),
