@@ -3,8 +3,9 @@
 
 #include "SceneObject.h"
 
-struct Sphere : SceneObject
+class Sphere : public SceneObject
 {
+public:
     const glm::vec3 center{};
     const float radius{};
 
