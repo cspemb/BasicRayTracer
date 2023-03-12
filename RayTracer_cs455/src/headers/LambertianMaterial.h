@@ -30,5 +30,5 @@ public:
           glossiness(glossiness)
     {}
 
-    glm::vec3 getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r) override;
+    glm::vec3 getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r, bool isInShadow) override;
 };

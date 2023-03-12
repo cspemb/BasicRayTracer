@@ -18,7 +18,14 @@ glm::vec3 LambertianMaterial::calculateAmbient(const Scene& scene) const
     return diffuseColor * coefAmbient * scene.getAmbientLightColor();
 }
 
-glm::vec3 LambertianMaterial::getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r)
+glm::vec3 LambertianMaterial::getColor(const Scene& scene, glm::vec3 normal, std::shared_ptr<Ray> r, bool isInShadow)
 {
-    return calculateDiffuse(scene, normal) + calculateSpecular(scene, normal, r) + calculateAmbient(scene);
+    glm::vec3 color {calculateAmbient(scene)};
+
+    if (!isInShadow)
+    {
+        color += calculateDiffuse(scene, normal) + calculateSpecular(scene, normal, r);
+    }
+
+    return color;
 }

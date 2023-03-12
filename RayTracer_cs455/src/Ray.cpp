@@ -14,3 +14,9 @@
 {
     return direction;
 }
+
+glm::vec3 Ray::offsetInDir(glm::vec3 point)
+{
+    constexpr float offset = .001f;
+    return point + direction * offset;
+}

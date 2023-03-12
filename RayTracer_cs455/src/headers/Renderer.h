@@ -8,7 +8,7 @@
 class Renderer
 {
     static constexpr auto aspectRatio {16.0 / 16.0};
-    static constexpr int imWidth {500};
+    static constexpr int imWidth {300};
     static constexpr int imHeight {static_cast<int>(imWidth / aspectRatio)};
     
     
@@ -18,6 +18,7 @@ class Renderer
 
     void processPixel(int x, int y) const;
     void ray_color(std::shared_ptr<Ray> r, Pixel& pixel) const;
+    bool isInShadow(glm::vec3 point) const;
 public:
     Renderer(const Scene& scene)
         : scene(scene)

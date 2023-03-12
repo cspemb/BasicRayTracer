@@ -13,6 +13,6 @@ public:
         : scene(scene)
     {}
     
-    void shadeObject(Pixel& pixel, std::shared_ptr<SceneObject> object, std::shared_ptr<Ray> r, float intersection) const;
+    void shadeObject(Pixel& pixel, std::shared_ptr<SceneObject> object, std::shared_ptr<Ray> r, float intersection, bool isInShadow) const;
 };
 

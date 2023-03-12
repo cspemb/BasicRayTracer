@@ -14,7 +14,7 @@ bool Triangle::isPointInside(glm::vec3 point)
         const float test = dot(query, getNormal());
 
         const float EPS = 0.001f;
-        if (test < EPS)
+        if (test < -EPS)
         {   
             return false;
         }
@@ -33,11 +33,6 @@ float Triangle::intersect(std::shared_ptr<Ray> r)
     if (fabs(denominator) < EPS) // no intersection (parallel)
     {
       return -1.0f;  
-    }
-    
-    if (denominator > 0.0f) // cull plane (pointing away from camera)
-    {
-        return -1.0f;
     }
     
     const float t = -(dot(normal, r->getOrigin()) + d) / denominator;

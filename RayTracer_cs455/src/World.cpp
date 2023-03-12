@@ -257,6 +257,6 @@ const std::map<std::string_view, Scene>& getScenes()
 {
     static std::map<std::string_view, Scene> scenes {{"scene1", getScene1()}, {"scene2", getScene2()},
         {"scene3", getScene3()}, {"scene4", getScene4()}, {"scene5", getScene5()}, {"scene6", getScene6()}};
-
+    
     return scenes;
 }
