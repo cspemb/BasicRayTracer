@@ -11,7 +11,7 @@ void Shader::shadeObject(Pixel& pixel, std::shared_ptr<SceneObject> object, std:
 {
     const glm::vec3 objectNormal = object->getNormal(r->at(intersection));
     
-    const glm::vec3 totalColor = object->material->getColor(scene, objectNormal, r);
+    const glm::vec3 totalColor = clamp(object->material->getColor(scene, objectNormal, r), 0.0f, 1.0f);
     
     pixel.r = fColorTo255(totalColor.x);
     pixel.g = fColorTo255(totalColor.y);
